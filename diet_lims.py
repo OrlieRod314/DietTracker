@@ -1,26 +1,58 @@
-import argparse
+class lim:
+    # Data from https://health.gov/our-work/food-nutrition/2015-2020-dietary-guidelines/guidelines/appendix-7/
+    # Macro limits based on grams
+    # fat macro calculated converting %kcal to grams, assuming 9 calories per gram of fat
+    # See: https://healthyeating.sfgate.com/many-grams-fat-per-day-should-children-have-5467.html
+    def __init__(self, age, sex):
+        try:
+            assert age > 0
+        except:
+            print("Age cannot be 0 or negative")
+        try:
+            assert sex is 'm' or sex is 'f':
+        except:
+            print("Sex must be either male or female")
+        
+        if sex == 'm': 
+            sex_string = 'Male'
+        else:
+            sex_string = 'Female'
+        self._profile = [age, sex_string]
+        
+        if sex == 'm':
+            if age < 4:
+                self._lims = [1_000, 130, 13, 44]
+            elif age < 9:
+                self._lims = [1_600, 130, 19, 62]
+            elif age < 14:
+                self._lims = [1_800, 130, 34, 70]
+            elif age < 19:
+                self._lims = [3_200, 130, 52, 124]
+            elif age < 31:
+                self._lims = [3_000, 130, 56, 116]
+            elif age < 51:
+                self._lims = [2_200, 130, 56, 85]
+            else:
+                self._lims = [2_000, 130, 56, 77]
+        else:
+            if age < 4:
+                self._lims = [1_000, 130, 13, 44]
+            elif age < 9:
+                self._lims = [1_200, 130, 19, 46]
+            elif age < 14:
+                self._lims = [1_600, 130, 34, 62]
+            elif age < 19:
+                self._lims = [1_800, 130, 34, 70]
+            elif age < 31:
+                self._lims = [2_000, 130, 46, 77]
+            elif age < 51:
+                self._lims = [1_800, 130, 46, 70]
+            else:
+                self._lims = [2_000, 130, 46, 77]
+   
+    def get_profile(self):
+        return self.profile
+    
+    def get_lims(self):
+        return self.lims
 
-parser = argparse.ArgumentParser(description = 'DietTracker: Track Nutrition and make better decisions')
-parser.add_argument('age', 
-                        metavar = 'AGE', required=True, type=int,
-                        help='User age')
-parser.add_argument('sex', 
-                        metavar = 'SEX', required=True, type=int,
-                        help='User sex')
-parser.add_argument('file', 
-                        metavar = 'FILE_NAME', required=True, type=str,
-                        help='Input file to which information will be saved')
-parser.add_argument('-kg', '--ketogenic', 
-                        action='store_true', dest='kg', default = False, 
-                        help='Offers recommendation based on ketogenic diet')
-parser.add_argument('-ver', '--version',
-                        action='version',  version=version_string,
-                        help='Display version information and dependencies.')
-detail = parser.add_mutually_exclusive_group()
-detail.add_argument('-q', '--quiet',
-                        action='store_true', 
-                        help='Print quiet')
-detail.add_argument('-v', '--verbose',
-                        action='store_true', 
-                        help='Print verbose')
-args = parser.parse_args()
