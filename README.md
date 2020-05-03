@@ -22,7 +22,7 @@ README.md
 ```
 ## Input Layout
 Input file should be .csv with each food item entered on a row.
-Attributes should be named accordingly:
+Attributes should be entered accordingly:
 <p align=center>
 Name    Calories    Carbohydrates   Protein     Fat
 </p>
