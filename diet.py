@@ -2,6 +2,7 @@
     Author: Orlando Rodriguez
     Purpose: 
 '''
+import os, sys
 import csv
 import entry
 import diet_lims
@@ -13,17 +14,14 @@ __version__ = "0.1"
 def main():
     parser = argparse.ArgumentParser(description = f"{module_name} (Version {__version__})")
     parser.add_argument('age', 
-                            metavar = 'AGE', required=True, type=int,
+                            metavar = 'AGE', type=int,
                             help='User age')
     parser.add_argument('sex', 
-                            metavar = 'SEX', required=True, type=int,
+                            metavar = 'SEX', type=str,
                             help='User sex')
     parser.add_argument('dataset_file_name', 
-                            metavar = 'DATASET_FILE_NAME', required=True, type=str,
+                            metavar = 'DATASET_FILE_NAME', type=str,
                             help='Input file that information will be read from')
-    parser.add_argument('output_file',
-                            metavar = 'OUTPUT_FILE_NAME', required=True, type=str,
-                            help = 'Output file to write report')
     parser.add_argument('-kg', '--ketogenic', 
                             action='store_true', dest='kg', default = False, 
                             help='Offers recommendation based on ketogenic diet')
@@ -41,18 +39,24 @@ def main():
     
     lines = []
     macro_sums = [0, 0, 0, 0]
-    with open(args.dataset_file_name, 'r') as csv_file:
+    datasets = 'datasets/'
+    dataset_file_name = args.dataset_file_name + '.csv'
+    with open(datasets + dataset_file_name, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         
         for line in csv_reader:
             for i in range(1, 4):
-                macro_sums[i] += line[i]
+                macro_sums[i] += int(line[i])
             lines.append(line)
     
-    entries = entry.make_entries(lines[1:])
+    entries = entry.make_entries(lines)
     limit = diet_lims.lim(args.age, args.sex)
     
-    
+    outputs = 'outputs/'
+    output_file_name = args.dataset_file_name + '_output.txt'
+    f = open(outputs + output_file_name, 'w')
+    f.write("This should be working")
+    f.close()
 
 if __name__ == "__main__":
     main()

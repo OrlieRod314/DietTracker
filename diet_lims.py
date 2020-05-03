@@ -9,7 +9,7 @@ class lim:
         except:
             print("Age cannot be 0 or negative")
         try:
-            assert sex is 'm' or sex is 'f':
+            assert sex is 'm' or sex is 'f'
         except:
             print("Sex must be either male or female")
         

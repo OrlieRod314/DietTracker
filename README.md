@@ -1,35 +1,51 @@
 # DietTracker
 Python program that tracks nutritional information and offers suggestions for an improved diet.
 
-
 ## Installation
-**NOTE**: Python 3.6 or higher is required
 ```bash
 # clone the repo
 $ git clone https://github.com/OrlieRod314/DietTracker.git
 
 # change the working directory to DietTracker
 $ cd DietTracker
-
-# install python3 and python3-pip if they are not installed
-
-# install the requirements
-$ python3 -m pip install -r requirements.txt
 ```
+## Folder Structure
+```bash
+.
+├── datasets
+├── outputs
+└── __pycache__
+diet.py
+diet_lims.py
+entry.py
+README.md
+```
+## Input Layout
+Input file should be .csv with each food item entered on a row.
+Attributes should be named accordingly:
+Name    Calories    Carbohydrates   Protein     Fat
+
+## Output
+Output file is automatically created using name of input file.
+File is created inside output directory.
 ## Usage
-
 ```
-$ python3 diet.py --help
-usage: diet.py [--kg] [--help] [--csv][--version] FILE_NAME[file]
+$ python diet.py -h 19 m orlando
+usage: diet.py [-h] [-kg] [-ver] [-q | -v] AGE SEX DATASET_FILE_NAME
 
-DietTracker: Track Nutrition and make more 
+DietTracker: Track nutrition and make better choices (Version 0.1)
 
 positional arguments:
-  FILE_NAME         Input file to which information will be saved
+  AGE                User age
+  SEX                User sex
+  DATASET_FILE_NAME  Input file that information will be read from
 
 optional arguments:
-  --help            Show this help message and exit
-  --kg              Offers recommendation based on ketogenic diet
-  --version         Display version information and dependencies.
-  --csv             Create Comma-Separated Values (CSV) File.
+  -h, --help         show this help message and exit
+  -kg, --ketogenic   Offers recommendation based on ketogenic diet
+  -ver, --version    Display version information and dependencies.
+  -q, --quiet        Print quiet
+  -v, --verbose      Print verbose
   ```
+  ## Team
+  Orlando Rodriguez
