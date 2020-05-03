@@ -23,7 +23,9 @@ README.md
 ## Input Layout
 Input file should be .csv with each food item entered on a row.
 Attributes should be named accordingly:
+<p align=center>
 Name    Calories    Carbohydrates   Protein     Fat
+</p>
 
 ## Output
 Output file is automatically created using name of input file.
