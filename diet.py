@@ -94,8 +94,11 @@ def main():
     if not args.nocolor:
         init()
     if args.verbose:
-        print(Style.BRIGHT + Fore.GREEN + "Reading from file " + dataset_file_name)
-        print(Style.RESET_ALL)
+        if args.nocolor:
+            print("Reading from file " + dataset_file_name)
+        else:
+            print(Style.BRIGHT + Fore.GREEN + "Reading from file " + dataset_file_name)
+            print(Style.RESET_ALL)
     
     with open(datasets + dataset_file_name, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
@@ -103,10 +106,6 @@ def main():
             for i in range(1, 5):
                 macro_sums[i - 1] += int(line[i])
             lines.append(line)
-    
-    if args.verbose:
-        print(Style.BRIGHT + Fore.GREEN + "Macro sums: " + str(macro_sums))
-        print(Style.RESET_ALL)
     
     entries = make_entries(lines)
     limit = Lim(args.age, args.sex)
@@ -116,8 +115,13 @@ def main():
         for entry in entries:
             print(entry)
         if args.verbose:
-            print(Style.BRIGHT + Fore.GREEN + "Limit: " + str(limit.get_lims()))
-            print(Style.RESET_ALL)
+            if args.nocolor:
+                print("Macro sums: " + str(macro_sums))
+                print("Limit: " + str(limit.get_lims()))
+            else:
+                print(Style.BRIGHT + Fore.CYAN + "Macro sums: " + str(macro_sums))
+                print(Style.BRIGHT + Fore.CYAN + "Limit: " + str(limit.get_lims()))
+                print(Style.RESET_ALL)
     
     if args.word:
         write_report_docx(entries, limit, macro_sums, args)
@@ -125,7 +129,11 @@ def main():
         write_report(entries, limit, macro_sums, args)
 
     if not args.quiet:
-        print("Output created")
+        if args.nocolor:
+            print("Output Created")
+        else:    
+            print(Style.BRIGHT + Fore.GREEN + "Output Created")
+            print(Style.RESET_ALL)
     
 if __name__ == "__main__":
     main()
