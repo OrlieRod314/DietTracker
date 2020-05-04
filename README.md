@@ -39,7 +39,10 @@ Output file is automatically created using name of input file.
 File is created inside output directory.
 ## Usage
 ```
-$ python diet.py [-h] [-kg] [-ver] [-nocol] [-q | -v] AGE SEX DATASET_FILE_NAME
+$ python diet.py --help
+
+usage: 
+diet.py [-h] [-kg] [-docx] [-ver] [-nocol] [-q | -v] AGE SEX DATASET_FILE_NAME
 
 DietTracker: Track nutrition and make better choices (Version 1.0)
 
@@ -51,6 +54,7 @@ positional arguments:
 optional arguments:
   -h, --help         show this help message and exit
   -kg, --ketogenic   Offers recommendation based on ketogenic diet
+  -docx, --word      Writes report to .docx file instead of .txt
   -ver, --version    Display version information and dependencies.
   -nocol, --nocolor  Disables color in terminal
   -q, --quiet        Print quiet
@@ -58,8 +62,8 @@ optional arguments:
   ```
 ### Examples
 ```
-$ python diet.py 19 m orell
-$ python diet.py -q 18 f kat
+$ python diet.py -v 19 m orell
+$ python diet.py -q -docx 18 f kat
 ```
 ## Team
 Original Creator - <a href= "https://github.com/OrlieRod314">Orlando Rodriguez</a>
