@@ -8,6 +8,9 @@ $ git clone https://github.com/OrlieRod314/DietTracker.git
 
 # change the working directory to DietTracker
 $ cd DietTracker
+
+# install the requirements
+$ python -m pip install -r requirements.txt
 ```
 ## Folder Structure
 ```bash
@@ -36,7 +39,7 @@ File is created inside output directory.
 ## Usage
 ```
 $ python diet.py -h 19 m orlando
-usage: diet.py [-h] [-kg] [-ver] [-q | -v] AGE SEX DATASET_FILE_NAME
+usage: diet.py [-h] [-kg] [-ver] [-nocol] [-q | -v] AGE SEX DATASET_FILE_NAME
 
 DietTracker: Track nutrition and make better choices (Version 0.1)
 
@@ -49,6 +52,7 @@ optional arguments:
   -h, --help         show this help message and exit
   -kg, --ketogenic   Offers recommendation based on ketogenic diet
   -ver, --version    Display version information and dependencies.
+  -nocol, --nocolor  Disables color in terminal
   -q, --quiet        Print quiet
   -v, --verbose      Print verbose
   ```

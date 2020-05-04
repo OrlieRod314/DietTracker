@@ -1,6 +1,10 @@
+''' File: entry.py
+    Author: Orlando Rodriguez
+    Purpose: Defines data structure for an entry
+'''
 class Entry:
     def __init__(self, data):
-        # name, calories, carbs, prot, fat, water
+        # name, calories, carbs, prot, fat
         self._name = data[0]
         self._cals = data[1]
         self._carbs = data[2]
@@ -20,11 +24,10 @@ class Entry:
 
     
     def __str__(self):
-        header = "Name\tCals\tCarbs\tProtein\t\tFat\n"
         info = f"{self.get_name()}\t{self.get_cals()}\t{self.get_carbs()}\t{self.get_prot()} \
         \t{self.get_fat()}"
         
-        return header + info
+        return info
     
 
 def make_entries(entry_data_lists):

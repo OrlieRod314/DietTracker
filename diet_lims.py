@@ -1,3 +1,7 @@
+''' File: diet_lims.py
+    Author: Orlando Rodriguez
+    Purpose: Defines data structure for ideal intake per sex and age
+'''
 class Lim:
     # Data from https://health.gov/our-work/food-nutrition/2015-2020-dietary-guidelines/guidelines/appendix-7/
     # Macro limits based on grams
