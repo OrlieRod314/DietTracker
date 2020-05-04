@@ -100,7 +100,7 @@ def main():
             print(Style.BRIGHT + Fore.GREEN + "Reading from file " + dataset_file_name)
             print(Style.RESET_ALL)
     
-    with open(datasets + dataset_file_name, 'r') as csv_file:
+    with open(datasets + dataset_file_name, 'r', encoding='utf-8-sig') as csv_file:
         csv_reader = csv.reader(csv_file)
         for line in csv_reader:
             for i in range(1, 5):
