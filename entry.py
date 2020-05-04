@@ -22,17 +22,13 @@ class Entry:
     def get_fat(self):
         return self._fat
 
-    
     def __str__(self):
         info = f"{self.get_name()}\t{self.get_cals()}\t{self.get_carbs()}\t{self.get_prot()} \
         \t{self.get_fat()}"
-        
         return info
     
-
 def make_entries(entry_data_lists):
     entries = []
     for entry_data in entry_data_lists:
         entries.append(Entry(entry_data))
     return entries
-    

@@ -9,14 +9,12 @@ from diet_lims import Lim
 import argparse
 from colorama import Fore, Style, init
 
-
 module_name = "DietTracker: Track nutrition and make better choices"
 __version__ = "1.0"    
 
 def write_report(entries, limit, macro_sums, args):
     outputs = 'outputs/'
     output_file_name = args.dataset_file_name + '_output.txt'
-    
     sum_difs = [0, 0, 0, 0]
     
     f = open(outputs + output_file_name, 'w')
@@ -25,7 +23,6 @@ def write_report(entries, limit, macro_sums, args):
     for i in range(len(limit.get_lims())):
         sum_difs[i] = limit.get_lims()[i] - macro_sums[i]
     f.write(str(sum_difs))
-    
     f.close()
     
 def main():
@@ -64,14 +61,12 @@ def main():
     
     if not args.nocolor:
         init()
-    
     if args.verbose:
         print(Style.BRIGHT + Fore.GREEN + "Reading from file " + dataset_file_name)
         print(Style.RESET_ALL)
     
     with open(datasets + dataset_file_name, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
-        
         for line in csv_reader:
             for i in range(1, 5):
                 macro_sums[i - 1] += int(line[i])
@@ -92,12 +87,9 @@ def main():
             print(Style.BRIGHT + Fore.GREEN + "Limit: " + str(limit.get_lims()))
             print(Style.RESET_ALL)
 
-    
     write_report(entries, limit, macro_sums, args)
-    
     if not args.quiet:
         print("Output created")
     
-
 if __name__ == "__main__":
     main()

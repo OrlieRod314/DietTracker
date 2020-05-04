@@ -59,4 +59,3 @@ class Lim:
     
     def get_lims(self):
         return self._lims
-
