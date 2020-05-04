@@ -20,8 +20,8 @@ class Entry:
 
     
     def __str__(self):
-        header = "Name\t\tCalories\tCarbohydrates\tProtein\tFat\n"
-        info = f"{self.get_name()}\t\t{self.get_cals()}\t{self.get_carbs()}\t{self.get_prot()} \
+        header = "Name\tCals\tCarbs\tProtein\t\tFat\n"
+        info = f"{self.get_name()}\t{self.get_cals()}\t{self.get_carbs()}\t{self.get_prot()} \
         \t{self.get_fat()}"
         
         return header + info

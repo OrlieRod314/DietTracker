@@ -51,8 +51,8 @@ class Lim:
                 self._lims = [2_000, 130, 46, 77]
    
     def get_profile(self):
-        return self.profile
+        return self._profile
     
     def get_lims(self):
-        return self.lims
+        return self._lims
 

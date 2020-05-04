@@ -4,12 +4,14 @@
 '''
 import os, sys
 import csv
-import entry
-import diet_lims
+from entry import make_entries, Entry
+from diet_lims import Lim
 import argparse
 
 module_name = "DietTracker: Track nutrition and make better choices"
 __version__ = "0.1"    
+
+# def write_report():
     
 def main():
     parser = argparse.ArgumentParser(description = f"{module_name} (Version {__version__})")
@@ -41,16 +43,29 @@ def main():
     macro_sums = [0, 0, 0, 0]
     datasets = 'datasets/'
     dataset_file_name = args.dataset_file_name + '.csv'
+    
+    if args.verbose:
+        print("Reading from file " + dataset_file_name)
+    
     with open(datasets + dataset_file_name, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         
         for line in csv_reader:
-            for i in range(1, 4):
-                macro_sums[i] += int(line[i])
+            for i in range(1, 5):
+                macro_sums[i - 1] += int(line[i])
             lines.append(line)
     
-    entries = entry.make_entries(lines)
-    limit = diet_lims.Lim(args.age, args.sex)
+    if args.verbose:
+        print("Macro sums: " + str(macro_sums))
+    
+    entries = make_entries(lines)
+    limit = Lim(args.age, args.sex)
+    
+    if not args.quiet:
+        print("Entries: ")
+        for entry in entries:
+            print(entry)
+        print("Limit: " + str(limit.get_lims()))
     
     outputs = 'outputs/'
     output_file_name = args.dataset_file_name + '_output.txt'
