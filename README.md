@@ -28,6 +28,7 @@ Attributes should be entered accordingly:
         <th>Fat</th>
     </tr>
 </table>
+Macro nutrients are in grams
 
 ## Output
 Output file is automatically created using name of input file.
