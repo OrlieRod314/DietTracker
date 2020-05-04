@@ -13,19 +13,21 @@ $ cd DietTracker
 ```bash
 .
 ├── datasets
-├── outputs
-└── __pycache__
-diet.py
-diet_lims.py
-entry.py
-README.md
+└── outputs
 ```
 ## Input Layout
 Input file should be .csv with each food item entered on a row.
 Attributes should be entered accordingly:
-<p align=center>
-Name    Calories    Carbohydrates   Protein     Fat
-</p>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Calories</th>
+        <th>Carbohydrates</th>
+        <th>Protein</th>
+        <th>Fat</th>
+    </tr>
+</table>
 
 ## Output
 Output file is automatically created using name of input file.
