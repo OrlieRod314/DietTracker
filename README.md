@@ -20,6 +20,7 @@ $ python -m pip install -r requirements.txt
 ```
 ## Input Layout
 Input file should be .csv with each food item entered on a row.
+File must be in dataset directory.
 Attributes should be entered accordingly:
 
 <table>
