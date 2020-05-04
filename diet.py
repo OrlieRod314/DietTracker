@@ -11,7 +11,7 @@ from diet_lims import Lim
 from colorama import Fore, Style, init
 from docx import *
 
-module_name = "DietTracker: Track nutrition and make better choices"
+module_name = "DietTracker: Tracks nutrition and offers suggestions for an improved diet."
 __version__ = "1.0"    
 
 def write_report(entries, limit, macro_sums, args):

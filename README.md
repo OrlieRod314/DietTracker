@@ -36,15 +36,17 @@ Macro nutrients are in grams
 
 ## Output
 Output file is automatically created using name of input file.
-File is created inside output directory.
+File is created inside output directory. Use -docx argument to output nutrition report to .docx
+
+<p>NOTE: As of now, --ketogenic is not implemented.</p>
 ## Usage
 ```
 $ python diet.py --help
+usage: diet.py [-h] [-kg] [-docx] [-ver] [-nocol] [-q | -v]
+               AGE SEX DATASET_FILE_NAME
 
-usage: 
-diet.py [-h] [-kg] [-docx] [-ver] [-nocol] [-q | -v] AGE SEX DATASET_FILE_NAME
-
-DietTracker: Track nutrition and make better choices (Version 1.0)
+DietTracker: Tracks nutrition and offers suggestions for an improved diet.
+(Version 1.0)
 
 positional arguments:
   AGE                User age
