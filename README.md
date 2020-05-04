@@ -41,7 +41,7 @@ File is created inside output directory.
 $ python diet.py -h 19 m orlando
 usage: diet.py [-h] [-kg] [-ver] [-nocol] [-q | -v] AGE SEX DATASET_FILE_NAME
 
-DietTracker: Track nutrition and make better choices (Version 0.1)
+DietTracker: Track nutrition and make better choices (Version 1.0)
 
 positional arguments:
   AGE                User age
