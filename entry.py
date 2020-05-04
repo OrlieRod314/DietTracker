@@ -1,4 +1,4 @@
-class entry:
+class Entry:
     def __init__(self, data):
         # name, calories, carbs, prot, fat, water
         self._name = data[0]
@@ -30,6 +30,6 @@ class entry:
 def make_entries(entry_data_lists):
     entries = []
     for entry_data in entry_data_lists:
-        entries.append(entry(entry_data))
+        entries.append(Entry(entry_data))
     return entries
     

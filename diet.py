@@ -50,10 +50,11 @@ def main():
             lines.append(line)
     
     entries = entry.make_entries(lines)
-    limit = diet_lims.lim(args.age, args.sex)
+    limit = diet_lims.Lim(args.age, args.sex)
     
     outputs = 'outputs/'
     output_file_name = args.dataset_file_name + '_output.txt'
+    
     f = open(outputs + output_file_name, 'w')
     f.write("This should be working")
     f.close()

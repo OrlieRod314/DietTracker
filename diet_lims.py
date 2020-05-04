@@ -1,4 +1,4 @@
-class lim:
+class Lim:
     # Data from https://health.gov/our-work/food-nutrition/2015-2020-dietary-guidelines/guidelines/appendix-7/
     # Macro limits based on grams
     # fat macro calculated converting %kcal to grams, assuming 9 calories per gram of fat
