@@ -11,7 +11,7 @@ from colorama import Fore, Style, init
 
 
 module_name = "DietTracker: Track nutrition and make better choices"
-__version__ = "0.1"    
+__version__ = "1.0"    
 
 def write_report(entries, limit, macro_sums, args):
     outputs = 'outputs/'
