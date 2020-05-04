@@ -4,10 +4,12 @@
 '''
 import os, sys
 import csv
+import argparse
+
 from entry import make_entries, Entry
 from diet_lims import Lim
-import argparse
 from colorama import Fore, Style, init
+from docx import *
 
 module_name = "DietTracker: Track nutrition and make better choices"
 __version__ = "1.0"    
@@ -24,7 +26,34 @@ def write_report(entries, limit, macro_sums, args):
         sum_difs[i] = limit.get_lims()[i] - macro_sums[i]
     f.write(str(sum_difs))
     f.close()
+
+def write_report_docx(entries, limit, macro_sums, args):
+    sum_difs = [0, 0, 0, 0]
     
+    document = Document()
+    document.add_heading('Nutrition Report')
+    p = document.add_paragraph('Here are the nutritional surpluses and deficiencies for a ')
+    p.add_run(str(limit.get_profile()[0])).bold = True
+    p.add_run('-year old ')
+    p.add_run(limit.get_profile()[1]).bold = True
+    p.add_run(' following the diet detailed in the ')
+    p.add_run(args.dataset_file_name).bold = True
+    p.add_run(' dataset.')
+    
+    table = document.add_table(rows=1, cols=4)
+    hdr_cells = table.rows[0].cells
+    hdr_cells[0].text = 'Cals'
+    hdr_cells[1].text = 'Carbs'
+    hdr_cells[2].text = 'Prot'
+    hdr_cells[3].text = 'Fat'
+    row_cells = table.add_row().cells
+    for i in range(len(limit.get_lims())):
+        row_cells[i].text = str(limit.get_lims()[i] - macro_sums[i])
+    outputs = 'outputs/'
+    output_file_name = args.dataset_file_name + '_output.docx'
+    document.add_page_break()
+    document.save(outputs + output_file_name)
+
 def main():
     parser = argparse.ArgumentParser(description = f"{module_name} (Version {__version__})")
     parser.add_argument('age', 
@@ -39,6 +68,9 @@ def main():
     parser.add_argument('-kg', '--ketogenic', 
                             action='store_true', dest='kg', default = False, 
                             help='Offers recommendation based on ketogenic diet')
+    parser.add_argument('-docx', '--word',
+                            action='store_true', default = False,
+                            help='Writes report to .docx file instead of .txt')
     parser.add_argument('-ver', '--version',
                             action='version',  version=__version__,
                             help='Display version information and dependencies.')
@@ -86,8 +118,12 @@ def main():
         if args.verbose:
             print(Style.BRIGHT + Fore.GREEN + "Limit: " + str(limit.get_lims()))
             print(Style.RESET_ALL)
+    
+    if args.word:
+        write_report_docx(entries, limit, macro_sums, args)
+    else:
+        write_report(entries, limit, macro_sums, args)
 
-    write_report(entries, limit, macro_sums, args)
     if not args.quiet:
         print("Output created")
     
