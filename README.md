@@ -62,4 +62,4 @@ $ python diet.py 19 m orell
 $ python diet.py -q 18 f kat
 ```
 ## Team
-Orlando Rodriguez
+Original Creator - <a href= "https://github.com/OrlieRod314">Orlando Rodriguez</a>
