@@ -38,7 +38,7 @@ Macro nutrients are in grams
 Output file is automatically created using name of input file.
 File is created inside output directory.
 ## Usage
-```
+```bash
 $ python diet.py -h 19 m orlando
 usage: diet.py [-h] [-kg] [-ver] [-nocol] [-q | -v] AGE SEX DATASET_FILE_NAME
 
@@ -57,5 +57,11 @@ optional arguments:
   -q, --quiet        Print quiet
   -v, --verbose      Print verbose
   ```
-  ## Team
-  Orlando Rodriguez
+# Examples
+```bash
+$ python diet.py 19 m orell
+$ python diet.py -q 18 f kat
+
+```
+## Team
+Orlando Rodriguez
