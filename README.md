@@ -39,6 +39,7 @@ Output file is automatically created using name of input file.
 File is created inside output directory. Use -docx argument to output nutrition report to .docx
 
 <p>NOTE: As of now, --ketogenic is not implemented.</p>
+
 ## Usage
 ```
 $ python diet.py --help
