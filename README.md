@@ -38,9 +38,8 @@ Macro nutrients are in grams
 Output file is automatically created using name of input file.
 File is created inside output directory.
 ## Usage
-```bash
-$ python diet.py -h 19 m orlando
-usage: diet.py [-h] [-kg] [-ver] [-nocol] [-q | -v] AGE SEX DATASET_FILE_NAME
+```
+$ python diet.py [-h] [-kg] [-ver] [-nocol] [-q | -v] AGE SEX DATASET_FILE_NAME
 
 DietTracker: Track nutrition and make better choices (Version 1.0)
 
@@ -57,8 +56,8 @@ optional arguments:
   -q, --quiet        Print quiet
   -v, --verbose      Print verbose
   ```
-# Examples
-```bash
+### Examples
+```
 $ python diet.py 19 m orell
 $ python diet.py -q 18 f kat
 
