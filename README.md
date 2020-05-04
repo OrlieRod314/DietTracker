@@ -60,7 +60,6 @@ optional arguments:
 ```
 $ python diet.py 19 m orell
 $ python diet.py -q 18 f kat
-
 ```
 ## Team
 Orlando Rodriguez
