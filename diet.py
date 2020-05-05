@@ -2,7 +2,8 @@
     Author: Orlando Rodriguez
     Purpose: Runs the diet tracker
 '''
-import os, sys
+import os
+import sys
 import csv
 import argparse
 
@@ -15,6 +16,9 @@ module_name = "DietTracker: Tracks nutrition and offers suggestions for an impro
 __version__ = "1.0"    
 
 def write_report(entries, limit, macro_sums, args):
+    ''' This function writes the nutrition report to a .txt file
+        Arguments: Entry list, ideal limit, sum of macros, system args
+    '''
     outputs = 'outputs/'
     output_file_name = args.dataset_file_name + '_output.txt'
     sum_difs = [0, 0, 0, 0]
@@ -28,11 +32,15 @@ def write_report(entries, limit, macro_sums, args):
     f.close()
 
 def write_report_docx(entries, limit, macro_sums, args):
+    ''' Writes the nutrition report to a .docx file
+        Arguments: Entry list, ideal limit, sum of macros, system args
+    '''
     sum_difs = [0, 0, 0, 0]
     
     document = Document()
     document.add_heading('Nutrition Report')
-    p = document.add_paragraph('Here are the nutritional surpluses and deficiencies for a ')
+    p = document.add_paragraph('Here are the nutritional surpluses \
+    and deficiencies for a ')
     p.add_run(str(limit.get_profile()[0])).bold = True
     p.add_run('-year old ')
     p.add_run(limit.get_profile()[1]).bold = True
@@ -55,7 +63,8 @@ def write_report_docx(entries, limit, macro_sums, args):
     document.save(outputs + output_file_name)
 
 def main():
-    parser = argparse.ArgumentParser(description = f"{module_name} (Version {__version__})")
+    parser = argparse.ArgumentParser(description = f"{module_name} \
+    (Version {__version__})")
     parser.add_argument('age', 
                             metavar = 'AGE', type=int,
                             help='User age')

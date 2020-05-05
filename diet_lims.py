@@ -3,10 +3,17 @@
     Purpose: Defines data structure for ideal intake per sex and age
 '''
 class Lim:
-    # Data from https://health.gov/our-work/food-nutrition/2015-2020-dietary-guidelines/guidelines/appendix-7/
-    # Macro limits based on grams
-    # fat macro calculated converting %kcal to grams, assuming 9 calories per gram of fat
-    # See: https://healthyeating.sfgate.com/many-grams-fat-per-day-should-children-have-5467.html
+    '''
+        Lays out the structure for a recommended diet dependent on age and sex.
+        
+        Data from https://health.gov/our-work/food-nutrition/2015-2020-dietary-guidelines/guidelines/appendix-7/
+            Macro limits based on grams
+        Fat macro calculated converting %kcal to grams, assuming 9 calories per gram of fat
+            See: https://healthyeating.sfgate.com/many-grams-fat-per-day-should-children-have-5467.html
+            
+            get_profile():    -gets the age and sex correspondent to limit
+            get_lims():       -gets the lim as a list
+    '''
     def __init__(self, age, sex):
         try:
             assert age > 0
@@ -53,7 +60,9 @@ class Lim:
                 self._lims = [1_800, 130, 46, 70]
             else:
                 self._lims = [2_000, 130, 46, 77]
-   
+    
+    # Getters for profile and lims
+    
     def get_profile(self):
         return self._profile
     
